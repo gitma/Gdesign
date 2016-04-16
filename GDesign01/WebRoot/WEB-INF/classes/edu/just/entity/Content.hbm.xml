@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="edu.just.entity">
+
+    <class name="Content" table="CONTENTS">
+        <id name="id" column="CONTENT_ID">
+            <generator class="native"/>
+        </id>
+        <property name="description" type="string" column="CONTENT_DESCRIPTION"/>
+        <property name="createdTime" type="timestamp" column="CONTENT_CT"/>
+		<property name="lastModifyTime" type="timestamp" column="CONTENT_LMT"/>
+		<property name="ipAddress" type="string" column="CONTENT_IPADDRESS"/>
+        
+        <!-- 用户user属性， 本类与User的多对一关联关系 -->
+        <many-to-one name="user" column="user_id" class="User"></many-to-one>
+        <!--标题title属性， 本类与Title的 多对一关联关系  -->
+        <many-to-one name="title" column="title_id" class="Title"></many-to-one>
+        
+    </class>
+
+</hibernate-mapping>

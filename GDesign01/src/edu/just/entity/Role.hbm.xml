@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="edu.just.entity">
+
+    <class name="Role" table="Roles">
+        <id name="id" column="ROLE_ID">
+            <generator class="native"/>
+        </id>
+        <property name="name" type="string" column="ROLE_NAME"/>
+        <property name="description" type="string" column="ROLE_DESCRIPTION"/>
+        
+        <!-- 角色与用户User		的多对多关联关系 -->
+        <set name="users" table="User_Role" lazy="false">
+        	<key column="role_Id"/>
+        	<many-to-many column="user_Id" class="User"/>
+        </set>
+        
+        <!-- 角色与权限Privilege	的多对多关系 -->
+        <set name="privileges" table="Role_Privilege" lazy="false">
+        	<key column="role_id"/>
+        	<many-to-many column="privilege_id" class="Privilege"></many-to-many>
+        </set>
+    </class>
+
+</hibernate-mapping>

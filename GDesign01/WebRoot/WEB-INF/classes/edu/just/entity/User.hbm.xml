@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="edu.just.entity">
+
+    <class name="User" table="Users">
+        <id name="id" column="USER_ID">
+            <generator class="native"/>
+        </id>
+        <property name="username" type="string" column="USER_USERNAME"/>
+        <property name="password" type="string" column="USER_PASSWORD"/>
+        <property name="realname" type="string" column="USER_REALNAME"/>
+        <property name="gender" type="string" column="USER_GENDER"/>
+        <property name="telephone" type="string" column="USER_TELEPHONE"/>
+        <property name="email" type="string" column="USER_EMAIL"/>
+        <property name="description" type="string" column="USER_DESCRIPTION"/>
+        <property name="age" type="string" column="USER_Age"/>
+        
+        <!-- 用户与部门Department 	的多对一关联关系 -->
+        <many-to-one name="department" column="department_Id" lazy="false"></many-to-one>
+        
+        <!-- 用户与角色Role		的多对多关联关系 -->
+        <set name="roles" table="User_Role" lazy="false">
+        	<key column="user_Id"/>
+        	<many-to-many column="role_Id" class="Role"/>
+        </set>
+    </class>
+
+</hibernate-mapping>
