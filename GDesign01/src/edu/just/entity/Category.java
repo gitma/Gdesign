@@ -39,6 +39,9 @@ public class Category {
 													11、故障处理	12、日常运维
 													13、文档提交*/						
 	private String jobPercent;//本工作完成百分比
+	
+	private String jobType;//1、项目开发  2、项目测试  3、内部测试  4、事假、、、、
+	
 	private Department department;//所属项目组
 	
 	private User user;//设置操作人
@@ -50,6 +53,13 @@ public class Category {
 	}
 	public void setJobPercent(String jobPercent) {
 		this.jobPercent = jobPercent;
+	}
+	
+	public String getJobType() {
+		return jobType;
+	}
+	public void setJobType(String jobType) {
+		this.jobType = jobType;
 	}
 	
 	public Department getDepartment() {
@@ -114,5 +124,6 @@ public class Category {
 	public void setStatue(Integer statue) {
 		this.statue = statue;
 	}
+	
 }
 

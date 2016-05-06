@@ -120,6 +120,13 @@
 			</div>
 		</div>
 		<div class="form-group">
+			<label for="realN" class="col-sm-2 control-label">真实姓名：</label>
+			<div class="col-sm-5">
+				<!-- <input type="password" class="form-control" id="inputPassword3" placeholder="Password"> -->
+				<s:textfield name="realname" class="form-control" id="realN" />
+			</div>
+		</div>
+		<div class="form-group">
 			<label for="sex" class="col-sm-2 control-label">性别：</label>
 			<div class="col-sm-5">
 				<s:radio name="gender" list="#{'男':'男', '女':'女'}" id="sex" />

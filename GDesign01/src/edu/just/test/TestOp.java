@@ -26,9 +26,16 @@ public class TestOp {
 	public static void main(String[] args){
 //		System.out.println(1!=1 && t());
 		List list = new ArrayList<String>();
-		testStr(list);
+//		testStr(list);
 		List list2 = new ArrayList<Object>();
-		testObj(list2);
+//		testObj(list2);
+		String testStr = "/user_logoutUI";
+		if(testStr.startsWith("/user_logout")){
+			System.out.println("ok");
+		}else{
+			System.out.println("ko");
+		}
+			
 	}
 	
 	public static boolean t(){

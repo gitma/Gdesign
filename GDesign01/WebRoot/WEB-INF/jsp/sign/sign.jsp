@@ -17,6 +17,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      	.self-width{
      		width:150px;
      	}
+     	
+     	body{
+     		background:#dfe8f6;width:100%;
+     	}
      </style>
 <meta charset="utf-8">
 </head>

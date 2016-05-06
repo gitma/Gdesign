@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    						<s:if test="#category.status==1">
 	    							审核通过
 	    						</s:if>
-	    						<s:elseif test="#category.status==2">审核未通过</s:elseif>
+	    	 					<s:elseif test="#category.status==2">审核未通过</s:elseif>
 	    						<s:else>正在审核中</s:else>
 	    						<%-- <s:property value="#category.status"/> --%>
 	    					</td>

@@ -69,6 +69,10 @@
 					$(this).datepicker('close');
 				});
 	});
+	
+	function chooseUploadPath(obj){
+		console.log(this).Option;
+	}
 </script>
 </head>
 
@@ -184,7 +188,11 @@
 			<label for="type" class="col-sm-2 control-label">工作类型</label>
 			<div class="col-sm-5">
 				<!-- <input type="password" class="form-control" id="inputPassword3" placeholder="Password"> -->
-				<s:textfield name="" class="form-control" id="type" />
+				<%-- <s:textfield name="" class="form-control" id="type" /> --%>
+				<%-- <s:select list="" name="#''" /> --%>
+				<s:select list="#{'项目开发':'项目开发', '项目测试':'项目测试', '事假':'事假' , '年假':'年假', '调休':'调休'}" class="form-control"
+							label="事假" listValue="value" onchange="chooseUploadPath(this)"
+							name="jobType"/>
 			</div>
 		</div>
 		<!-- 设置行距 -->

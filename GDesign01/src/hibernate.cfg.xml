@@ -39,6 +39,7 @@
 	<mapping resource="edu/just/entity/Title.hbm.xml" />
 	<mapping resource="edu/just/entity/Audit.hbm.xml" />
 	<mapping resource="edu/just/entity/Sign.hbm.xml" />
+	<mapping resource="edu/just/entity/Sale.hbm.xml" />
 </session-factory>
 
 </hibernate-configuration>

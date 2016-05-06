@@ -22,6 +22,7 @@
 		<property name="lastModifyTime" type="timestamp" column="CATEGORY_LMT"/>
 		<property name="titleCount" type="int" column="CATEGORY_titleCount"/>
 		<property name="jobPercent" type="string" column="CATEGORY_JOBPERCENT"/>
+		<property name="jobType" type="string" column="CATEGORY_JOBPTYPE"/>
 		<property name="statue" type="int" column="CATEGORY_STATUE"/>
         <!-- 属性标题titles 本类与Category  的一对多关联关系 -->
         <set name="titles">

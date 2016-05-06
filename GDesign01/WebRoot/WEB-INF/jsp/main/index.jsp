@@ -21,13 +21,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
   </head>
 
-    <frameset rows="50, *, 50"  framespacing=0 border=0 frameborder=1>
+    <frameset rows="50, *"  framespacing=0 border=0 frameborder=1>
     	<frame  scrolling="no" noresize src="${pageContext.request.contextPath}/main_top.action">
     	<frameset cols="250, *">
     		<frame name="left" scrolling="yes" noresize src="${pageContext.request.contextPath}/main_left.action">
     		<frame name="right" scrolling="yes" noresize src="${pageContext.request.contextPath}/main_right.action">
     	</frameset>
-    	<frame  scrolling="no" noresize src="${pageContext.request.contextPath}/main_foot.action">
+    	<%-- <frame  scrolling="no" noresize src="${pageContext.request.contextPath}/main_foot.action"> --%>
     </frameset>
     <noframes>
   <body>

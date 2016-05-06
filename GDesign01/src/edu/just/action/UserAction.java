@@ -80,7 +80,9 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		/*设置岗位*/
 		List<Role> roleList = roleService.findByIds(roleIds);
 		model.setRoles(new HashSet<Role>(roleList));
+	
 		model.setPassword(Md5Util.Md5Encrypt("1234"));
+//System.out.println("未加密之前的密码 ： " + newP + "\b" + "加密后的密码 ：" + Md5Util.Md5Encrypt(newP));	
 		userService.save(model);
 		return "toList";
 	}
@@ -186,7 +188,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	
 	/*分页所需数据*/
 	private Integer pageNo = 1;
-	private Integer pageSize = 5;
+	private Integer pageSize = 7;
 	public Integer getPageNo() {
 		return pageNo;
 	}

@@ -55,7 +55,7 @@ public class PrivilegeServiceImpl implements PrivilegeService{
 	@Override
 	public List<Privilege> findTopList() {
 		// TODO Auto-generated method stub
-		return (List<Privilege>) sessionFactory.getCurrentSession().createQuery("from Privilege p where p.parent is null").list();
+		return (List<Privilege>) sessionFactory.getCurrentSession().createQuery("from Privilege p where p.parent is null order by p.id ASC").list();
 	}
 	
 }

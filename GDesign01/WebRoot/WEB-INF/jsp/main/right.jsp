@@ -26,6 +26,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		font-size:12px;background:#dfe8f6;width:100%;overflow:hidden;
 		}
 	</style>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/style/css/amazeui.min.css">
+	<style type="text/css">
+	
+		body{
+		font-size:14px;background:#dfe8f6;width:100%;overflow:hidden;
+		text-align:center;
+		}
+	</style>
   </head>
   
   <!-- 载入初始化页面 -->
@@ -56,6 +64,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		<div class="content_nav"></div>
    		<div class="content_text"></div>
    	</div>
+   	
+   	<footer>
+
+          <p>由 just零度--yycat</a>
+            提供技术支持,<a href="https://github.com/gitma/Gdesign" title="yycat"
+                                                target="_blank">源码查看---></a>点击此处</p>
+        <p>CopyRight©2014  AllMobilize Inc.</p>
+        <p>京ICP备13033158</p>
+  </footer>
   </body>
 </html>
 	

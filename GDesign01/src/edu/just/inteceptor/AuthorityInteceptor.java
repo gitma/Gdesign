@@ -44,7 +44,7 @@ public class AuthorityInteceptor extends AbstractInterceptor{
 		// 如果未登录
 				if (user == null) {
 					System.out.println("user==null------>" + priUrl);
-					if (priUrl.startsWith("/user_login")) { // "/user_loginUI", "/user_login"
+					if (priUrl.startsWith("/user_login") || priUrl.startsWith("/user_logout")) { // "/user_loginUI", "/user_login"
 						// 如果是去登录，就放行
 						return invocation.invoke();
 					} else {

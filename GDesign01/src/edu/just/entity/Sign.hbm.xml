@@ -23,7 +23,11 @@
         <property name="signCount" type="int" column="SIGN_SIGNCOUNT"/>
         
         
-        <!-- 属性用户user  本类与user  的一对一关联关系 -->
+        <!-- 属性用户user  本类与user  的多对多关联关系 -->
+    <!--     <set name="user" table="Sign_User" lazy="false">
+        	<key column="sign_id"/>
+        	<many-to-many column="user_id" class="User"/>
+        </set> -->
 		<many-to-one name="user" column="userId" unique="true"/>
 		        
     </class>
