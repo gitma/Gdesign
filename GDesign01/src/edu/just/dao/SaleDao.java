@@ -4,6 +4,10 @@
  *
  */
 package edu.just.dao;
+
+import java.util.List;
+
+import edu.just.entity.Sale;
  
  /**
  * 

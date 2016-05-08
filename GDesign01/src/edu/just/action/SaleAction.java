@@ -11,12 +11,18 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
@@ -26,6 +32,8 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.json.JSONUtil;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -64,6 +72,8 @@ public class SaleAction extends ActionSupport implements ModelDriven<Sale>{
 	
 	String filePath = File.separator + "excelTempet" + File.separator;
 	
+	private String result;
+
 	@Override
 	public Sale getModel() {
 		// TODO Auto-generated method stub
@@ -81,11 +91,22 @@ public class SaleAction extends ActionSupport implements ModelDriven<Sale>{
 	/*销售报告*/
 	public String list() throws Exception{
 		//从数据库中查出
-		List<Sale> saleList = saleService.findAll();
-		ActionContext.getContext().put("saleList", saleList);
+		
+		
 		return "list";
 	}
 	
+	public String getData() throws Exception{
+		List<Sale> profitList = saleService.findAllProfit();
+		//将数据存储在map中，在转换成json类型数据
+		/*Map<String, Object> map = new HashMap<String, Object>();*/
+		JSONArray json = JSONArray.fromObject(profitList);
+		
+		//给result赋值，传递给前端页面
+		result = json.toString();
+/*		System.out.println(result + "aaaaaaa");*/
+		return "getData";
+	}
 	// 文件下载
 	public InputStream getExcelStream() throws FileNotFoundException,
 			UnsupportedEncodingException {
@@ -232,5 +253,14 @@ public class SaleAction extends ActionSupport implements ModelDriven<Sale>{
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
+	
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
 }
 

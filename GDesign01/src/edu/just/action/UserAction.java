@@ -73,6 +73,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 //		/*部门和岗位*/
 		return "list";
 	}
+	
 	/*添加*/
 	public String add() throws Exception{
 		/*设置部门*/

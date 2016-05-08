@@ -12,7 +12,7 @@
 	<constant name="struts.action.extension" value="action"/>
 	<!-- 默认的试图主题Theme -->
 	<constant name="struts.ui.theme" value="simple"/>
-    <package name="default" namespace="/" extends="struts-default">
+    <package name="default" namespace="/" extends="json-default">
 		
 		<interceptors>
 			<!-- 配置拦截器 -->
@@ -114,6 +114,11 @@
        <!-- 销售-->
         <action name="sale_*" class="saleAction" method="{1}">
         	<result name="list">/WEB-INF/jsp/sale/list.jsp</result>
+        	<result type="json" name="getData">
+        	<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+        	<!-- 默认将会序列所有有返回值的getter方法的值，而无论该方法是否有对应属性 --> 
+        		<param name="root">result</param>
+        	</result>
         	<!-- <result name="excel" type="stream">
 				指定文件下载类型， application/octet-stream默认值可以下载所有类型
            		<param name="contentType">application/vnd.ms-excel</param>

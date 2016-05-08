@@ -26,5 +26,7 @@ public interface SaleService {
 
 	List<Sale> findAll();
 
+	List<Sale> findAllProfit();
+
 }
 

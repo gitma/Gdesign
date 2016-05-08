@@ -25,6 +25,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <META name=robots content=noindex,follow>
 <!-- ${pageContext.request.contextPath }/style/ -->
 <LINK rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/style/css/default.css">
+<SCRIPT type="text/javascript" src="${pageContext.request.contextPath }/script/jquery.js"></SCRIPT>
+<SCRIPT>
+	$("document").ready(function(){
+		//防止frame页面里面出现登陆页面
+		if(top.location!=self.location){
+			/* alert(top.location.href);
+			alert(self.location.href); */
+			top.location=self.location;
+		}/* else{
+			alert("aaaaa");	
+		} */
+	});
+</SCRIPT>
 <SCRIPT type=text/javascript>
 	var loading_lang = "正在载入...";
 </SCRIPT>

@@ -49,12 +49,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    					<td><s:property value="#category.name"/></td>
 	    					<td>
 	    						<!-- 判断状态如果为NULL 或者为0 则显示正在审核中， 否则显示，审核通过 -->
-	    						<s:if test="#category.status==1">
-	    							审核通过
+	    						<s:if test="#category.statue==1">
+	    							<span class="am-badge am-badge-success am-radius">审核通过</span>
 	    						</s:if>
-	    	 					<s:elseif test="#category.status==2">审核未通过</s:elseif>
-	    						<s:else>正在审核中</s:else>
-	    						<%-- <s:property value="#category.status"/> --%>
+	    	 					<s:elseif test="#category.statue==2"><span class="am-badge am-badge-danger am-radius">审核未通过</span></s:elseif>
+	    						<s:else> <span class="am-badge am-radius">正在审核中</span></s:else>
+	    						<%-- <s:property value="#category.statue"/> --%>
 	    					</td>
 	    					<td><s:property value="#category.user.username"/></td>
 	    					<td><s:property value="#category.department.name"/></td>

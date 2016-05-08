@@ -20,21 +20,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/css/bootstrap.min.css">
+	<style type="text/css">
+		.self-pos{
+			margin-left:80px;
+		}
+	</style>
 </head>
 
 <body>
 	<!--为Echarts准备一个Dom-->
 	<div id="main" style="height:400px"></div>
 
+	<hr>
+	<div>
 	<s:form action="sale_show">
-		<s:submit value="导出成excel"></s:submit>
+		<s:submit class="btn btn-success self-pos" value="导出成excel"></s:submit>
 	</s:form>
+	</div>
+	
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/script/jquery.min.js"></script>
 	<!--Echarts单文件引入-->
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath }/script/echart/js/echarts.js"></script>
 
-	<!->
 	<script type="text/javascript">
 		//-配置路径--
 		require.config({
@@ -52,7 +62,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			function(ec){
 				//基于准备好的dom，初始化echarts图表
 				var myChart = ec.init(document.getElementById('main'));
-
+				
+                var profits = [1,1,1,1];
+                // 同步执行  
+               /*  $.ajaxSettings.async = false;  
+                  
+                // 加载数据  
+                $.getJSON('${pageContext.request.contextPath }/sale_getData.action',
+                		function (json) {  
+                			alert(json);
+                });   */
+             // 同步执行  
+                $.ajaxSettings.async = false; 
+                $.ajax({
+    				url:'${pageContext.request.contextPath }/sale_getData.action',
+    				type:'POST',
+    				data:"{}", 
+    				dataType:'json',
+    				success:function(data){
+    					var result = $.parseJSON(data);
+    					for(var i=0; i<result.length; i++){
+    						profits[i] = result[i];
+    					}
+    					console.log(profits);
+    				},
+    				error:function(data){
+    					alert("error");
+    				}
+    			});
+				
 				var option =  {
 					tooltip:{
 						show:true
@@ -77,7 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						{
 						"name":"营业额（单位：千万）",
 						"type":"line",
-						"data":[5,20,40,10,10,20,5,20]
+						"data":profits/* [20,80,10,65,43,66,120] */
 						}
 					]
 				};
@@ -87,6 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 			
 			);
+		
 	</script>
 	
 	

@@ -5,6 +5,8 @@
  */
 package edu.just.dao.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import edu.just.dao.SaleDao;
