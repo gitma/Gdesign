@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		var init = ""
 			 +"<div class='wel'>"
 			 +"<div><!--<img src='img/logo.jpg' /> --></div>"
-			 +"<div style='margin:40px 0 0 10px;'><!-- <img src='' /> --></div>"
+			 +"<div style='margin:40px 0 0 10px;'><img src='img/guide.png' /></div>"
 			 +"<div style='padding:20px 0 0 55px;color:#333333;'>点击“^”或“v”展开或关闭菜单<hr>"
 			 +"<b>点解导航栏中登陆的用户退出登录</b></div>"
 			 +"<a href='#' style='width:150px;line-height:16px;margin:40px 0 0 50px;background:url() no-repeat;padding-left:20px;color:red;font-weight:bold;text-decoration:underline;display:block;'></a>"

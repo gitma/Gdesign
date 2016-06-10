@@ -38,7 +38,7 @@
 </head>
 
 <body>
-	<h4>用户信息修改</h4>
+	<h5>用户信息修改</h5>
 	<br />
 	<%-- <s:form action="user_modify">
 		<s:hidden name="id"></s:hidden>

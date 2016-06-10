@@ -48,5 +48,10 @@ public class SaleServiceImpl implements SaleService{
 		// TODO Auto-generated method stub
 		return (List<Sale>)sessionFactory.getCurrentSession().createQuery(" select s.profit from Sale s order by id ASC ").list();
 	}
+	@Override
+	public void save(Sale model) {
+		// TODO Auto-generated method stub
+		saleDao.save(model);
+	}
 }
 

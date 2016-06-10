@@ -127,7 +127,7 @@
 			<label for="user" class="col-sm-2 control-label">提交人</label>
 			<div class="col-sm-5">
 				<!-- <input type="password" class="form-control" id="inputPassword3" placeholder="Password"> -->
-				<label class="col-sm-2 control-label">${user.username }</label>
+				<label class="col-sm-4 control-label">${user.username }</label>
 				<%-- <s:textfield name="#user.username" class="form-control" id="user" /> --%>
 			</div>
 		</div>

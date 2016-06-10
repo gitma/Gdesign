@@ -24,6 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-	无访问权限!!!
+	<img src="${pageContext.request.contextPath }/img/no_privilege.jpeg"/>
   </body>
 </html>

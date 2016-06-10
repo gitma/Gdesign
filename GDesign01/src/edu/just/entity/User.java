@@ -158,6 +158,26 @@ public class User {
 		return false;
 	}
 
+	/**
+	 * 判断用户是否具有指定name的权限
+	 * @param name
+	 * @return
+	 */
+	public boolean hasPriByN(String name){
+		if(isAdmin()){  
+            return true;  
+        }  
+        //判断普通用户是否有指定名称的权限  
+        for(Role role:roles){  
+            for(Privilege priv:role.getPrivileges()){  
+                if(priv.getName().equals(name)){  
+                    return true;  
+                };                
+            }  
+        }  
+        return false; 
+	}
+	
 	private boolean isAdmin() {
 		// TODO Auto-generated method stub
 		return "admin".equals(username);

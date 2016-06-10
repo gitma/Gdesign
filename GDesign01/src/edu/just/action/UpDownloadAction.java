@@ -101,7 +101,7 @@ public class UpDownloadAction extends ActionSupport {
 				"attachment;fileName="
 						+ java.net.URLEncoder.encode(fileName, "UTF-8"));
 
-		InputStream inputStream = new FileInputStream(getSavePath() + "\\" + this.getFileName());
+		InputStream inputStream = new FileInputStream(getSavePath() + "\\" + fileName);
 		System.out.println(inputStream);
 		return inputStream;
 //		System.out.println(inputStream);

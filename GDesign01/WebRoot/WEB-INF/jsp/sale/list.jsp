@@ -74,6 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 });   */
              // 同步执行  
                 $.ajaxSettings.async = false; 
+                
                 $.ajax({
     				url:'${pageContext.request.contextPath }/sale_getData.action',
     				type:'POST',

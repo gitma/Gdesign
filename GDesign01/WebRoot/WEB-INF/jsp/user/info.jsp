@@ -30,22 +30,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   <style type="text/css">
   	.self-table{
-  		width:500px;
+  		width:72%;
   		text-align:center;
   	}
   	
   	.self-btn{
-  		width:80%;
+  		/* width:80%; */
+  		padding:5px 48px 5px 48px;
   	}
   </style>
   <body>
+  <h5>个人信息</h5>
 	<div>
-
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist"  id="myTabs">
     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">全部信息</a></li>
     <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">基础信息</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -66,6 +66,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    		<td>所属部门：</td>
 	    		<td>${name}</td>
 	    		</tr>
+	    		<!-- <tr>
+	    		<td>职位：</td>
+	    		<td></td>
+	    		</tr> -->
+	    		<tr>
+	    		<td>性别：</td>
+	    		<td>${gender}</td>
+	    		</tr>
+	    		<tr>
+	    		<td>电话：</td>
+	    		<td>${telephone}</td>
+	    		</tr>
 	    		<tr>
 	    		<td>电子邮件：</td>
 	    		<td><s:property value="%{email}"/></td>
@@ -75,14 +87,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    		<td><s:property value="%{description}"></s:property>
 	    		</tr>
 	    		<tr>
-	    		<td rowspan="2" colspan="2"><%-- <s:a action="user_delete?id=%{id}" onclick="return confirm('确定要删除吗?')" class="">删除</s:a> --%>
-	    					<s:a action="user_modifyUI?id=%{id}" class="btn btn-info self-btn">修改</s:a>
-	    					
 	    	</tr>
     </tbody>
-    
+    		
     </table>
-    	
+    	<div>
+    		<s:a action="user_modifyUI?id=%{id}" class="btn btn-info self-btn">修改</s:a>
+    	</div>
     </div>
     <div role="tabpanel" class="tab-pane" id="profile">
 		<table class="am-table self-table">
@@ -113,66 +124,25 @@ QQ号码：		微信：
 合同续签：		福利地区：	
 备注： -->	
 	    		<td>姓名：</td>
-	    		<td>张三</td>
-	    		</tr>
-	    		<tr>
-	    		<td>性别：</td>
-	    		<td>男</td>
+	    		<td>${realname}</td>
 	    		</tr>
 	    		<tr>
 	    		<td>电话：</td>
-	    		<td>123</td>
+	    		<td>${telephone}</td>
 	    		</tr>
 	    		<tr>
 	    		<td>电子邮件：</td>
 	    		<td><s:property value="%{email}"/></td>
 	    		</tr>
-	    		<tr>
-	    		<td>信息描述：</td>
-	    		<td><s:property value="%{description}"></s:property>
-	    		</tr>
-	    		<tr>
-	    		<td rowspan="2" colspan="2"><%-- <s:a action="user_delete?id=%{id}" onclick="return confirm('确定要删除吗?')" class="">删除</s:a> --%>
-	    					<s:a action="user_modifyUI?id=%{id}" class="btn btn-info self-btn">修改</s:a>
-	    					
-	    	</tr>
+	    		
     </tbody>
     
     </table>
+    <div> 
+	    <s:a action="user_modifyUI?id=%{id}" class="btn btn-info self-btn">修改</s:a>
 	</div>
-    <div role="tabpanel" class="tab-pane" id="messages">
-		<table class="am-table self-table">
-    
-    <tbody>
-	    	<tr>
-	    		<td>登录名：</td>
-	    		<td><s:property value="%{username}"/></td>
-	    		</tr>
-	    		<tr>
-	    		<td>真实姓名：</td>
-	    		<td><s:property value="%{realname}"/></td>
-	    		</tr>
-	    		<tr>
-	    		<td>所属部门：</td>
-	    		<td>${name}</td>
-	    		</tr>
-	    		<tr>
-	    		<td>电子邮件：</td>
-	    		<td><s:property value="%{email}"/></td>
-	    		</tr>
-	    		<tr>
-	    		<td>信息描述：</td>
-	    		<td><s:property value="%{description}"></s:property>
-	    		</tr>
-	    		<tr>
-	    		<td rowspan="2" colspan="2"><%-- <s:a action="user_delete?id=%{id}" onclick="return confirm('确定要删除吗?')" class="">删除</s:a> --%>
-	    					<s:a action="user_modifyUI?id=%{id}" class="btn btn-info self-btn">修改</s:a>
-	    					
-	    	</tr>
-    </tbody>
-    
-    </table>
 	</div>
+ 
   </div>
 
 </div>

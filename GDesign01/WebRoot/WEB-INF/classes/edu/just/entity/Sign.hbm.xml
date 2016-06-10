@@ -28,7 +28,7 @@
         	<key column="sign_id"/>
         	<many-to-many column="user_id" class="User"/>
         </set> -->
-		<many-to-one name="user" column="userId" unique="true"/>
+		<many-to-one name="user" column="userId" class="User"/>
 		        
     </class>
 

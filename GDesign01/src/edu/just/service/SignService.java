@@ -5,6 +5,9 @@
  */
 package edu.just.service;
 
+import java.util.Date;
+import java.util.List;
+
 import edu.just.entity.Sign;
 import edu.just.entity.User;
  
@@ -29,7 +32,13 @@ public interface SignService {
 
 	void update(Sign sign);
 
-	Sign findByUserAndDate(User user, int year, int month);
+	List<Sign> findByUserAndDate(User user, int year, int month);
+
+	List<Sign> findSignHistoryByUserAndDate(User user, String startTime,
+			String endTime);
+
+	List<Sign> findSignHistoryByUserAndDate(User user, Date startTime,
+			Date endTime);
 
 }
 

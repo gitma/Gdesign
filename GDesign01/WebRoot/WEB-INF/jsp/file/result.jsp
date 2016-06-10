@@ -53,13 +53,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   					<%-- <s:property value="#file"/><br> --%>
   						<%-- fileName:<s:property value="key"/><br> --%>
   						<%-- <s:property value="#file.key"/> --%>
-  						<td><input type="checkbox"/><s:property value="#status.index+1"/></td>
+  						<td><s:property value="#status.index+1"/></td>
   						
   						<td><s:a action="file_downloadFile.action?fileName=%{#file.key}&uploadDir=%{uploadDir}"><s:property value="value"/></s:a></td>
   						<td>tom</td>
   						<td>2016-03</td>
   						<td><s:property value="uploadDir"/></td>
-  						<td><s:a action="file_downloadFile.action?fileName=%{#file.key}&uploadDir=%{uploadDir}"><i>download</i></s:a></td>
+  						<td><s:a action="file_downloadFile.action?fileName=%{#file.key}&uploadDir=%{uploadDir}"><i><img src="${pageContext.request.contextPath }/img/download.png" style="height:28px; width:40px;"/></i></s:a></td>
   					</tr>
   				</s:iterator>
   			</ul>
@@ -72,6 +72,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	</s:form>
   	</table>
   	
-  	<div class="foot"><s:a action="file_addFile.action"><button type="button" class="am-btn am-btn-primary am-btn-block">上传文档</button></s:a><br></div>
+  	<div class="foot"><s:a action="file_addFile.action"><button type="button" class="am-btn am-btn-primary">上传文档</button></s:a><br></div>
   </body>
 </html>

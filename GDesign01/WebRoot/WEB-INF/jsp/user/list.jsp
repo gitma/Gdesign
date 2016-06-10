@@ -100,7 +100,7 @@
 			<s:iterator begin="%{beginIndex}" end="%{endIndex}" var="num">
 				<s:if test="#num==pageNo">
 					<li class="am-active"><s:a
-							action="user_list?pageNo=%{num}" class="am-active">${num }</s:a></li>
+							action="user_list?pageNo=%{num}" class="">${num }</s:a></li>
 				</s:if>
 				<s:else>
 					<li class=""><s:a action="user_list?pageNo=%{num}">${num }</s:a></li>

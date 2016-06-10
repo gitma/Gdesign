@@ -25,9 +25,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    周报审核<br/>
+<!--     周报审核<br/> -->
     	<s:form >
     		<s:hidden name="userId"/>
+    		<s:a action="audit_categoryNoAuditList">过滤显示未审核项</s:a>
+    		<br>
     		<table class="am-table am-table-bordered am-table-striped am-table-hover">
 	    		<tr>
 	    			<th><input type="checkbox">选项</th>
@@ -41,10 +43,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    		</tr>
     			
     			<!-- 判断是否有可查询的周报 -->
-    			<s:if test="#categoryList!=null">
-	    			<s:iterator id="category" value="categoryList" status="st">
+    			<s:if test="recordList!=null">
+	    			<s:iterator id="category" value="recordList" status="st">
 	    				<tr>
-	    					<td><input type="checkbox"/><s:property value="#st.index+1"/></td><!-- 输出当前元素索引 -->
+	    					<td><s:property value="#st.index+1"/></td><!-- 输出当前元素索引 -->
 	    					<td><s:date name="#category.createdTime" format="yyyy-MM-dd"/><%-- <s:property value="#category.createdTime"/> --%></td>
 	    					<td><s:property value="#category.name"/></td>
 	    					<td>
@@ -66,6 +68,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			</s:if>
     			
     		</table>
+    		
+    				<ul data-am-widget="pagination"
+			class="am-pagination am-pagination-default">
+
+			<li class="am-pagination-first "><s:a
+					action="audit_list?pageNo=1">第一页</s:a></li>
+
+			<li class="am-pagination-prev "><s:a
+					action="audit_list?pageNo=%{pageNo-1}">上一页</s:a></li>
+
+			<s:iterator begin="%{beginIndex}" end="%{endIndex}" var="num">
+				<s:if test="#num==pageNo">
+					<li class="am-active"><s:a
+							action="audit_list?pageNo=%{num}" class="am-active">${num }</s:a></li>
+				</s:if>
+				<s:else>
+					<li class=""><s:a action="audit_list?pageNo=%{num}">${num }</s:a></li>
+				</s:else>
+				<%-- <li><a href="#">${num }</a></li> --%>
+
+			</s:iterator>
+
+			<li class="am-pagination-next "><s:a
+					action="audit_list?pageNo=%{pageNo+1}">下一页</s:a></li>
+
+			<li class="am-pagination-last "><s:a
+					action="audit_list?pageNo=%{totalPage}">最末页</s:a></li>
+		</ul>
     	</s:form>
   </body>
 </html>

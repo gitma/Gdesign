@@ -28,5 +28,7 @@ public interface SaleService {
 
 	List<Sale> findAllProfit();
 
+	void save(Sale model);
+
 }
 

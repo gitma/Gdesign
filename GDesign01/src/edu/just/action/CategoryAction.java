@@ -70,7 +70,15 @@ public class CategoryAction extends ActionSupport implements ModelDriven<Categor
 			System.out.println(user + "23333333333");
 		}
 		Integer userId = user.getId();
-		List<Category> categoryList = categoryService.findAll();
+		
+/*判断是否是管理人员*/
+		List<Category> categoryList = null;
+		if(user.getUsername().equals("admin")){
+			categoryList = categoryService.findAll();
+		}else{
+			categoryList = categoryService.findAllCategoriesByUser(user);
+		}
+		
 		ActionContext.getContext().put("categoryList", categoryList);
 		
 		/*部门列表*/
@@ -127,12 +135,19 @@ public class CategoryAction extends ActionSupport implements ModelDriven<Categor
 	
 	/*显示周报信息 */
 	public String show() throws Exception{
-		/*User user = (User) ActionContext.getContext().getSession().get("user");
-		Integer userId = user.getId();*/
+		User user = (User) ActionContext.getContext().getSession().get("user");
+		Integer userId = user.getId();
 //		List<Category> categoryList = categoryService.findAll();
 //		ActionContext.getContext().put("categoryList", categoryList);
-
-		PageBean recordList = (PageBean) categoryService.findCategory(pageNo, pageSize);
+/*判断是否是管理人员*/
+		PageBean recordList  = null;
+		if(user.getUsername().equals("admin")){
+			recordList = (PageBean) categoryService.findCategory(pageNo, pageSize);
+		}else{
+			recordList = (PageBean) categoryService.findCategoryByUser(pageNo, pageSize, user);
+		}
+		
+		
 		ActionContext.getContext().getValueStack().push(recordList);
 		/*部门列表*/
 		/*List<Department> departmentList = departmentService.findAll();

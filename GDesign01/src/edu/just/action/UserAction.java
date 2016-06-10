@@ -148,6 +148,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	}
 	/*删除*/
 	public String delete() throws Exception{
+		userService.delete(model.getId());
 		return "toList";
 	}
 	

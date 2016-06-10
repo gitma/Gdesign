@@ -86,7 +86,8 @@
         <!-- 签到 -->
         <action name="sign_*" class="signAction" method="{1}">
         	<result name="signUI">/WEB-INF/jsp/sign/sign.jsp</result>
-        	<result name="toIndex" type="redirectAction">user_list</result>
+        	<result name="signHistory">/WEB-INF/jsp/sign/list.jsp</result>
+        	<result name="repeatSignUI">/WEB-INF/jsp/sign/repeatSign.jsp</result>
         </action>
         
         <!-- 文档管理 -->
@@ -134,7 +135,7 @@
            		<param name="bufferSize">2048</param>
 			</result> -->
         	<result name="addUI">/WEB-INF/jsp/sale/add.jsp</result>
-        	<result name="toIndex" type="redirectAction">sale_list</result>
+        	<result name="toIndex">/WEB-INF/jsp/sale/addok.jsp</result>
         </action>
     </package>
 

@@ -5,6 +5,9 @@
  */
 package edu.just.service.impl;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.hibernate.SessionFactory;
@@ -57,13 +60,30 @@ public class SignServiceImpl implements SignService{
 		signDao.update(sign);
 	}
 	@Override
-	public Sign findByUserAndDate(User user, int year, int month) {
+	public List<Sign> findByUserAndDate(User user, int year, int month) {
 		// TODO Auto-generated method stub
-		return (Sign) sessionFactory.getCurrentSession().createQuery("From Sign s where s.user=? and s.year=? and s.month=?")
+		return (List<Sign>) sessionFactory.getCurrentSession().createQuery("From Sign s where s.user=? and s.year=? and s.month=? order by id desc")
 				.setParameter(0, user)
 				.setParameter(1, year)
 				.setParameter(2, month)
-				.uniqueResult();
+				.list();
+	}
+	@Override
+	public List<Sign> findSignHistoryByUserAndDate(User user, Date startTime,
+			Date endTime) {
+		// TODO Auto-generated method stub
+		return (List<Sign>) sessionFactory.getCurrentSession().createQuery("From Sign s where  s.user=? and s.lastSignDate>=? and s.lastSignDate<=? order by id asc")
+				.setParameter(0, user)
+				.setParameter(1, startTime)
+				.setParameter(2, endTime)
+				.list();
+							
+	}
+	@Override
+	public List<Sign> findSignHistoryByUserAndDate(User user, String startTime,
+			String endTime) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

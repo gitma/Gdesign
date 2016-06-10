@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.just.common.PageBean;
 import edu.just.dao.CategoryDao;
 import edu.just.entity.Category;
+import edu.just.entity.User;
 import edu.just.service.CategoryService;
  
  /**
@@ -43,6 +44,13 @@ public class CategoryServiceImpl implements CategoryService{
 	public List<Category> findAll() {
 		// TODO Auto-generated method stub
 		return categoryDao.findAll();
+	}
+	@Override
+	public List<Category> findAllCategoriesByUser(User user) {
+		// TODO Auto-generated method stub
+		return sessionFactory.getCurrentSession().createQuery("from Category c where user=?")
+				.setParameter(0, user)
+				.list();
 	}
 	@Override
 	public void delete(Integer id) {
@@ -77,6 +85,33 @@ public class CategoryServiceImpl implements CategoryService{
 				.list();
 		return new PageBean(pageNo, pageSize, recordCount.intValue(), recordList);
 	}
+	@Override
+	public PageBean findCategoryByUser(Integer pageNo, Integer pageSize,
+			User user) {
+		Long recordCount = (Long) sessionFactory.getCurrentSession().createQuery(" Select Count(*) from Category where user=?")
+				.setParameter(0, user)
+				.uniqueResult();
+		
+		List recordList = sessionFactory.getCurrentSession().createQuery("from Category category where user=? order by category.createdTime DESC ")
+				.setParameter(0, user)
+				.setFirstResult((pageNo-1) * pageSize)
+				.setMaxResults(pageSize)
+				.list();
+		return new PageBean(pageNo, pageSize, recordCount.intValue(), recordList);
+	}
+	@Override
+	public PageBean findCategoryNoAudit(Integer pageNo, Integer pageSize) {
+		//计算总页数
+				Long recordCount = (Long) sessionFactory.getCurrentSession().createQuery(" Select Count(*) from Category c where c.statue is null")
+						.uniqueResult();
+				
+				List recordList = sessionFactory.getCurrentSession().createQuery("from Category category where category.statue is null order by category.createdTime DESC")
+						.setFirstResult((pageNo-1) * pageSize)
+						.setMaxResults(pageSize)
+						.list();
+				return new PageBean(pageNo, pageSize, recordCount.intValue(), recordList);
+	}
+	
 
 }
 

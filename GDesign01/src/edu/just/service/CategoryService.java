@@ -9,6 +9,7 @@ import java.util.List;
 
 import edu.just.common.PageBean;
 import edu.just.entity.Category;
+import edu.just.entity.User;
  
  /**
  * 
@@ -36,6 +37,12 @@ public interface CategoryService {
 	void update(Category category);
 
 	PageBean findCategory(Integer pageNo, Integer pageSize);
+
+	List<Category> findAllCategoriesByUser(User user);
+
+	PageBean findCategoryByUser(Integer pageNo, Integer pageSize, User user);
+
+	PageBean findCategoryNoAudit(Integer pageNo, Integer pageSize);
 
 }
 

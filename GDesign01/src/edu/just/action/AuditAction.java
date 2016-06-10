@@ -5,8 +5,6 @@
  */
 package edu.just.action;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.context.annotation.Scope;
@@ -16,6 +14,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import edu.just.common.PageBean;
 import edu.just.entity.Audit;
 import edu.just.entity.Category;
 import edu.just.service.CategoryService;
@@ -52,13 +51,27 @@ public class AuditAction extends ActionSupport implements ModelDriven<Audit>{
 	}
 
 	public String list() throws Exception{
-		/**/
-		List<Category> categoryList = categoryService.findAll();
-		ActionContext.getContext().put("categoryList", categoryList);
+		/*List<Category> categoryList = categoryService.findAll();
+		 *
+		 *ActionContext.getContext().put("categoryList", categoryList);
+		 * */
 		
+		/*
+		 * 使用分页效果显示，每页显示8条数据
+		 * */
+		
+		PageBean recordList = null;
+		recordList = categoryService.findCategory(pageNo, pageSize);
+		ActionContext.getContext().getValueStack().push(recordList);
 		return "list";
 	}
 	
+	public String categoryNoAuditList() throws Exception{
+		PageBean recordList = null;
+		recordList = categoryService.findCategoryNoAudit(pageNo, pageSize);
+		ActionContext.getContext().getValueStack().push(recordList);
+		return "list";
+	}
 	/*审核页面*/
 	public String auditUI() throws Exception{
 		/*将周报对象传递过去*/
@@ -93,6 +106,23 @@ public class AuditAction extends ActionSupport implements ModelDriven<Audit>{
 		this.categoryId = categoryId;
 	}
 
-	
+	/*分页所需数据*/
+	private Integer pageNo = 1;
+	private Integer pageSize = 8;
+	public Integer getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(Integer pageNo) {
+		this.pageNo = pageNo;
+	}
+
+	public Integer getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(Integer pageSize) {
+		this.pageSize = pageSize;
+	}
 }
 

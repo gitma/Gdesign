@@ -85,8 +85,8 @@ public class SaleAction extends ActionSupport implements ModelDriven<Sale>{
 		return "addUI";
 	}
 	public String add() throws Exception{
-		
-		return "toList";
+		saleService.save(model);
+		return "toIndex";
 	}
 	/*销售报告*/
 	public String list() throws Exception{

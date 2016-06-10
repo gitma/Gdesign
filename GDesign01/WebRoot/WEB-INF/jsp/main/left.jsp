@@ -126,19 +126,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <ul id="main-nav" class="nav nav-tabs nav-stacked" style="">
                 	<!-- 显示一级菜单 -->
     				<s:iterator value="#application.privilegeTopList">
+    					<!-- 根据用户权限 判断显示一级菜单 -->
+    					<s:if test="#session.user.hasPriByN(name)">
                     <li>
                         <a class="ul-toggle nav-header" >
                             <i class="glyphicon glyphicon-cog"></i>
                             	<span class="first_ul">${name }</span>
                                <span class="pull-right glyphicon glyphicon-chevron-down"></span>
                         </a>
+                        
                         <ul class="second nav nav-list  collapse  secondmenu">
                         	<!-- 显示第二层菜单 -->
                             <s:iterator value="children">
+                            	<s:if test="#session.user.hasPriByN(name)">
     							<li><a target="right" href="${pageContext.request.contextPath }${url }.action">${name}</a></li>
+    							</s:if>
     						</s:iterator>
                         </ul>
                     </li>
+                    </s:if>
  					</s:iterator>
                 </ul>
             </div>
